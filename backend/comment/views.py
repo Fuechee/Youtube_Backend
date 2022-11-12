@@ -12,4 +12,16 @@ def get_all_comments(request, video_id):
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
 
-
+@api_view(['POST', 'GET'])
+@permission_classes([IsAuthenticated])
+def create_post(request):
+    if request.method == 'POST':
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        comments = Comment.objects.filter(user_id=request.user.id)
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
