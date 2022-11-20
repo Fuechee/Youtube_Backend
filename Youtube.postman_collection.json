@@ -232,20 +232,29 @@
 					"name": "GET all comments(unprotected",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/123456/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"123456",
+								""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GET comments for user (protected)",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Create Comment",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -257,11 +266,46 @@
 								}
 							]
 						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/123456/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"123456",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY5NzY3NTk1LCJpYXQiOjE2Njg5MDM1OTUsImp0aSI6ImE3MTg0MDU1ZTRmYTQ2YzliYWM2YjAxNzRlYzJkYTU1IiwidXNlcl9pZCI6NSwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.GMMNEtWUJ6YJQg1FYWSlfw0zeVVbeeST_khdQs1SZhY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": 1,\r\n    \"video_id\": \"transformers trailer\",\r\n    \"text\": \"Prime soo coool\"\r\n\r\n}",
+							"raw": "{\r\n    \"user\": 1,\r\n    \"video_id\": \"123456\",\r\n    \"text\": \"Prime soo coool\",\r\n    \"likes\": 0,\r\n    \"dislikes\": 0 \r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
